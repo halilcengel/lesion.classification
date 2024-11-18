@@ -7,3 +7,4 @@ scikit-fuzzy
 matplotlib
 uvicorn
 scikit-learn
+opencv-python
