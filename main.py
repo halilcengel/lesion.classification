@@ -8,7 +8,7 @@ from border_irregularity import calculate_border_irregularity
 from pigment_transition import calculate_pigment_transition
 from calculate_color_variation import calculate_color_variation
 from calculate_glcm_features import calculate_glcm_features
-from lession_classifier import LesionClassifier
+from monolith import MelanomaFeatureCollector
 from fastapi import UploadFile, File, HTTPException
 from typing import Dict
 import numpy as np
@@ -255,30 +255,27 @@ async def calculate_texture_features_endpoint(
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
 
 
-@app.post("/classify-lesion")
-async def classify_lesion(results: Dict):
-    """Lezyon sınıflandırma endpoint'i"""
+@app.post("/extract-features")
+async def extract_features(file: UploadFile = File(...)):
     try:
-        classifier = LesionClassifier()
+        # Read image
+        contents = await file.read()
+        nparr = np.frombuffer(contents, np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        # Eğitim verisini yükle (gerçek uygulamada bu önceden eğitilmiş olmalı)
-        # Bu örnek için dummy veri kullanıyoruz
-        X_train = np.random.rand(100, 17)  # 17 özellik
-        y_train = np.random.randint(0, 2, 100)  # 0: benign, 1: malignant
+        # Create collector and get features
+        collector = MelanomaFeatureCollector()
+        features = await collector.collect_features(img)
 
-        # Modeli eğit
-        classifier.train(X_train, y_train)
-
-        # Özellikleri çıkar
-        features = classifier.extract_features(results)
-
-        # Sınıflandırma yap
-        classification_result = classifier.predict(features)
-
-        return classification_result
-
+        # Return both structured features and feature vector
+        return {
+            "features": features.__dict__,
+            "feature_vector": features.to_vector().tolist(),
+            "feature_names": collector.get_feature_names()
+        }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Classification error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/generate")
 async def process_image_endpoint():
