@@ -180,7 +180,7 @@ image = cv2.imread(img_path)
 image_cielab = convert_to_cielab(img_path)
 
 # SLIC params
-num_superpixels = 300  # Number of superpixels
+num_superpixels = 100  # Number of superpixels
 compactness = 30  # Compactness factor
 max_iterations = 10  # Maximum iterations for the SLIC algorithm
 
