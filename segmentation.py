@@ -134,7 +134,7 @@ def plot_images(images, titles, output_dir, cols=3):
 
 def main():
     # Input and output directories
-    input_dir = "images/clean_images"
+    input_dir = "images"
     # use this in report
     # output_dir = 'images/segmentation'
     segment_dir = 'images/segmentation_masks'

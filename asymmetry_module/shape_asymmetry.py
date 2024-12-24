@@ -2,6 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 from asymmetry_module.utils import rotate_image, split_vertically, split_horizontally
 
+
 def calculate_asymmetry(image, split_by='vertical'):
     diff_percentage = 0  # Initialize with a default value
 
@@ -22,6 +23,7 @@ def calculate_asymmetry(image, split_by='vertical'):
         diff_percentage = (area_diff / total_area) * 100
 
     return diff_percentage
+
 
 def visualize_asymmetry_steps(image):
     """Ï
@@ -89,7 +91,8 @@ def visualize_asymmetry_steps(image):
 
     plt.tight_layout()
     plt.show()
-    
+
+
 if __name__ == '__main__':
     your_image = cv2.imread('../segmentation_v2_masked_images/ISIC_0000042_masked.png', cv2.IMREAD_GRAYSCALE)
     visualize_asymmetry_steps(your_image)

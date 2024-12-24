@@ -3,7 +3,6 @@ import numpy as np
 import cv2
 
 
-
 def calculate_pixel_intensity(image_array):
     """
     Calculate pixel intensity of an image array.
@@ -23,9 +22,8 @@ def calculate_asymmetry_metrics(image_array):
         return 0
     return mean_intensity
 
-if __name__ == '__main__':
-    image = cv2.imread('../segmentation_v2_masked_images/ISIC_0000042_masked.png', cv2.IMREAD_GRAYSCALE)
 
+def calculate_brightness_asymmetry(image):
     rotated_image = rotate_image(image)
 
     top_half, bottom_half = split_horizontally(rotated_image)
@@ -52,3 +50,10 @@ if __name__ == '__main__':
         print("Result: Horizontal Asymmetric")
     else:
         print("Result: Horizontal Symmetric")
+
+    return vertical_asymmetry_percentage, horizontal_asymmetry_percentage
+
+
+if __name__ == '__main__':
+    image = cv2.imread('../segmentation_v2_masked_images/ISIC_0000042_masked.png', cv2.IMREAD_GRAYSCALE)
+    calculate_brightness_asymmetry(image)

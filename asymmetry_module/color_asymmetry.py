@@ -6,7 +6,7 @@ from typing import Tuple, List, Union
 import warnings
 
 
-class AsymmetryAnalyzer:
+class ColorAsymmetryAnalyzer:
     def __init__(self, n_segments: int = 200, compactness: int = 10, color_threshold: float = 1e-3):
         """
         Initialize the asymmetry analyzer.
@@ -73,7 +73,7 @@ class AsymmetryAnalyzer:
 
         return symmetric_count, asymmetric_count
 
-    def analyze_image(self, image_path: str) -> Tuple[bool, bool, dict]:
+    def analyze_image(self, image) -> Tuple[bool, bool, dict]:
         """
         Analyze both horizontal and vertical asymmetry in the image.
 
@@ -83,14 +83,6 @@ class AsymmetryAnalyzer:
         Returns:
             Tuple of (horizontal_asymmetric, vertical_asymmetric, analysis_details)
         """
-        try:
-            image = io.imread(image_path)
-        except Exception as e:
-            raise IOError(f"Failed to load image: {str(e)}")
-
-        if image.ndim != 3:
-            raise ValueError("Expected RGB image with 3 channels")
-
         height, width, _ = image.shape
         mid_h, mid_w = height // 2, width // 2
 
@@ -347,7 +339,7 @@ class AsymmetryAnalyzer:
 
 # Usage example:
 if __name__ == "__main__":
-    analyzer = AsymmetryAnalyzer(n_segments=200, compactness=10)
+    analyzer = ColorAsymmetryAnalyzer(n_segments=200, compactness=10)
     image_path = "segmentation_v2_masked_images/ISIC_0000042_masked.png"
 
     try:

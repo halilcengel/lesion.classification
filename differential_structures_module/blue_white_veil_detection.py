@@ -5,20 +5,15 @@ from skimage.segmentation import slic
 from skimage.util import img_as_float
 
 
-def detect_blue_white_veil(image_path, reference_blue=(0, 0, 255), reference_white=(255, 255, 255)):
+def detect_blue_white_veil(original_img, reference_blue=(0, 0, 255), reference_white=(255, 255, 255)):
     """
     Detects blue-white veil regions in a segmented dermoscopic image.
 
-    :param image_path: Path to the segmented dermoscopic image
+    :param original_img: Segmented dermoscopic image
     :param reference_blue: Reference color in BGR (OpenCV format) for the "blue" range
     :param reference_white: Reference color in BGR (OpenCV format) for the "white" range
     :return: A mask highlighting regions identified as "blue-white veil"
     """
-    # Read the segmented image
-    original_img = cv2.imread(image_path)
-    if original_img is None:
-        raise ValueError("Could not read the image at the specified path.")
-
     # Convert to float image for SLIC
     float_img = img_as_float(original_img)
 
