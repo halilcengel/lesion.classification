@@ -1,4 +1,4 @@
-from v2.asymmetry_module.utils import rotate_image, split_vertically, split_horizontally
+from asymmetry_module.utils import rotate_image, split_vertically, split_horizontally
 import numpy as np
 import cv2
 

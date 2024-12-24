@@ -1,6 +1,6 @@
 import cv2
 import matplotlib.pyplot as plt
-from v2.asymmetry_module.utils import rotate_image, split_vertically, split_horizontally
+from asymmetry_module.utils import rotate_image, split_vertically, split_horizontally
 
 def calculate_asymmetry(image, split_by='vertical'):
     diff_percentage = 0  # Initialize with a default value

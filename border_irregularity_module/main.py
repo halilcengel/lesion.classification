@@ -1,6 +1,6 @@
 import cv2
 
-from v2.border_irregularity_module import utils
+from border_irregularity_module import utils
 
 
 def main():

@@ -1,10 +1,10 @@
 import cv2
 from matplotlib import pyplot as plt
 
-from v2.differential_structures_module.pigment_network_detection import detect_pigment_network
-from v2.differential_structures_module.blue_white_veil_detection import detect_blue_white_veil
-from v2.differential_structures_module.dots_and_globs_detection import detect_dots_globules
-from v2.differential_structures_module.structless_area_detection import detect_structureless_area
+from differential_structures_module.pigment_network_detection import detect_pigment_network
+from differential_structures_module.blue_white_veil_detection import detect_blue_white_veil
+from differential_structures_module.dots_and_globs_detection import detect_dots_globules
+from differential_structures_module.structless_area_detection import detect_structureless_area
 
 def main():
     image_path = "../segmentation_v2_masked_images/ISIC_0024306_masked.png"
