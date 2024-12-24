@@ -217,7 +217,7 @@ def main_color(img, cnt):
 
 if __name__ == "__main__":
     # Read image
-    image = cv2.imread('clean_images/ISIC_0000042.jpg')
+    image = cv2.imread('images/clean_images/ISIC_0000042.jpg')
     if image is None:
         raise ValueError("Could not read image")
 

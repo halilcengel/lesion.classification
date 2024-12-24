@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acec7c3c-2cc9-4697-b1c3-497d33f79ffd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000042.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000042.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000074.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000074.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000095.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000095.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000102.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000102.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000103.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000103.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000148.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000148.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000171.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000171.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000191.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000191.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000214.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000214.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0000264.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0000264.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0024306.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0024306.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0024320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0024320.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0024358.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0024358.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0024402.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0024402.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0024436.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0024436.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_images/ISIC_0026798.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/clean_images/ISIC_0026798.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/color_extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/color_extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hair_removal.py" beforeDir="false" afterPath="$PROJECT_DIR$/hair_removal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/masked_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmentation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmentation_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/segmentation_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/segmentation_visualization.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +118,14 @@
       <recent name="$PROJECT_DIR$/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Halil\Desktop\bitirme\lesion.classification\images" />
+      <recent name="C:\Users\Halil\Desktop\bitirme\lesion.classification" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/v2" />
       <recent name="$PROJECT_DIR$/models" />
-      <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SLIC_v2">
+  <component name="RunManager" selected="Python.segmentation_v2">
     <configuration name="SLIC" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="lesion_classification" />
       <option name="ENV_FILES" value="" />
@@ -117,7 +140,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/v2/SLIC.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Halil\Desktop\bitirme\lesion.classification\SLIC.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,7 +163,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/v2/SLIC_v2.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Halil\Desktop\bitirme\lesion.classification\SLIC_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,6 +195,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="segmentation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lesion_classification" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Halil\Desktop\bitirme\lesion.classification\segmentation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="shape_asymmetry" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="lesion_classification" />
       <option name="ENV_FILES" value="" />
@@ -187,29 +233,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/v2/shape_asymmetry.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="shape_asymmetry_v2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="lesion_classification" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/v2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/v2/shape_asymmetry_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,19 +259,19 @@
     <list>
       <item itemvalue="FastAPI.Unnamed" />
       <item itemvalue="FastAPI.lesion_classification" />
+      <item itemvalue="Python.segmentation_v2" />
       <item itemvalue="Python.SLIC" />
       <item itemvalue="Python.SLIC_v2" />
       <item itemvalue="Python.brightness_asymmetry" />
       <item itemvalue="Python.shape_asymmetry" />
-      <item itemvalue="Python.shape_asymmetry_v2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.segmentation_v2" />
         <item itemvalue="Python.SLIC_v2" />
         <item itemvalue="Python.SLIC" />
         <item itemvalue="Python.brightness_asymmetry" />
         <item itemvalue="Python.shape_asymmetry" />
-        <item itemvalue="Python.shape_asymmetry_v2" />
       </list>
     </recent_temporary>
   </component>
@@ -294,6 +317,7 @@
       <workItem from="1734268000803" duration="17599000" />
       <workItem from="1734333769124" duration="20415000" />
       <workItem from="1734713194778" duration="2015000" />
+      <workItem from="1735059627623" duration="709000" />
     </task>
     <servers />
   </component>
@@ -312,38 +336,38 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lesion_classification$lesion_segmentation.coverage" NAME="lesion_segmentation Coverage Results" MODIFIED="1734301244372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$monolith.coverage" NAME="monolith Coverage Results" MODIFIED="1734268346465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$color_asymmetry.coverage" NAME="color_asymmetry Coverage Results" MODIFIED="1734395603978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$asymmetry.coverage" NAME="asymmetry Coverage Results" MODIFIED="1734390706667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$segmentation.coverage" NAME="segmentation Coverage Results" MODIFIED="1734375318744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$main.coverage" NAME="main Coverage Results" MODIFIED="1734289176063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/level_set" />
-    <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation_v4.coverage" NAME="level_set_segmentation_v4 Coverage Results" MODIFIED="1734290050592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$color_extract.coverage" NAME="color_extract Coverage Results" MODIFIED="1734389914592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$add_hair.coverage" NAME="add_hair Coverage Results" MODIFIED="1731847311020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$drlse_algo.coverage" NAME="drlse_algo Coverage Results" MODIFIED="1734288314742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/level_set" />
     <SUITE FILE_PATH="coverage/lesion_classification$border_detection_v2.coverage" NAME="border_detection_v2 Coverage Results" MODIFIED="1734434073191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/lesion_classification$hair_removal_v3.coverage" NAME="hair_removal_v3 Coverage Results" MODIFIED="1732564873209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$brightness_asymmetry.coverage" NAME="brightness_asymmetry Coverage Results" MODIFIED="1734434139522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$asymmetry_v2.coverage" NAME="shape_asymmetry_v2 Coverage Results" MODIFIED="1734434112690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$SLIC_v2.coverage" NAME="SLIC_v2 Coverage Results" MODIFIED="1734435566817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/lesion_classification$lesion_classification.coverage" NAME="lesion_classification Coverage Results" MODIFIED="1732558288003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation_v2.coverage" NAME="level_set_segmentation_v2 Coverage Results" MODIFIED="1734300583242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation.coverage" NAME="level_set_segmentation Coverage Results" MODIFIED="1734299808288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$color_asymmetry.coverage" NAME="color_asymmetry Coverage Results" MODIFIED="1734395603978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/lesion_classification$model_main.coverage" NAME="model_main Coverage Results" MODIFIED="1732056857184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$segmentation__1_.coverage" NAME="segmentation (1) Coverage Results" MODIFIED="1734387591904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$hair_removal_v2.coverage" NAME="hair_removal_v2 Coverage Results" MODIFIED="1732567922148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$hair_removal.coverage" NAME="hair_removal Coverage Results" MODIFIED="1734376579780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$hair_removal_v10.coverage" NAME="hair_removal_v10 Coverage Results" MODIFIED="1734268483334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$border_detection.coverage" NAME="border_detection Coverage Results" MODIFIED="1734378826676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$add_hair.coverage" NAME="add_hair Coverage Results" MODIFIED="1731847311020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation_v2.coverage" NAME="level_set_segmentation_v2 Coverage Results" MODIFIED="1734300583242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$color_extract.coverage" NAME="color_extract Coverage Results" MODIFIED="1734389914592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$lesion_segmentation.coverage" NAME="lesion_segmentation Coverage Results" MODIFIED="1734301244372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$asymmetry_v2.coverage" NAME="shape_asymmetry_v2 Coverage Results" MODIFIED="1734434112690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$asymmetry.coverage" NAME="asymmetry Coverage Results" MODIFIED="1734390706667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$brightness_asymmetry.coverage" NAME="brightness_asymmetry Coverage Results" MODIFIED="1734434139522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/lesion_classification$segmentation_v3.coverage" NAME="segmentation_v3 Coverage Results" MODIFIED="1734389100726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$shape_asymmetry.coverage" NAME="shape_asymmetry Coverage Results" MODIFIED="1734434125999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$SLIC.coverage" NAME="SLIC Coverage Results" MODIFIED="1734435068563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$hair_removal_v10.coverage" NAME="hair_removal_v10 Coverage Results" MODIFIED="1734268483334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lesion_classification$drlse_algo.coverage" NAME="drlse_algo Coverage Results" MODIFIED="1734288314742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/level_set" />
     <SUITE FILE_PATH="coverage/lesion_classification$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1731954199838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/lesion_classification$test_hair_removal_v2.coverage" NAME="test_hair_removal_v2 Coverage Results" MODIFIED="1734268330830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lesion_classification$segmentation_v2.coverage" NAME="segmentation_v2 Coverage Results" MODIFIED="1734389136468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$segmentation.coverage" NAME="segmentation Coverage Results" MODIFIED="1734375318744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$hair_removal.coverage" NAME="hair_removal Coverage Results" MODIFIED="1734376579780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$SLIC_v2.coverage" NAME="SLIC_v2 Coverage Results" MODIFIED="1734435566817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation_v4.coverage" NAME="level_set_segmentation_v4 Coverage Results" MODIFIED="1734290050592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$shape_asymmetry.coverage" NAME="shape_asymmetry Coverage Results" MODIFIED="1734434125999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$hair_removal_v2.coverage" NAME="hair_removal_v2 Coverage Results" MODIFIED="1732567922148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/lesion_classification$shape_asymmetry_v2.coverage" NAME="shape_asymmetry_v2 Coverage Results" MODIFIED="1734393641303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$monolith.coverage" NAME="monolith Coverage Results" MODIFIED="1734268346465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lesion_classification$main.coverage" NAME="main Coverage Results" MODIFIED="1734289176063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/level_set" />
     <SUITE FILE_PATH="coverage/lesion_classification$Add_Hair.coverage" NAME="Add Hair Coverage Results" MODIFIED="1731847684801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation.coverage" NAME="level_set_segmentation Coverage Results" MODIFIED="1734299808288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$border_detection.coverage" NAME="border_detection Coverage Results" MODIFIED="1734378826676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$SLIC.coverage" NAME="SLIC Coverage Results" MODIFIED="1734435068563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation_v3.coverage" NAME="level_set_segmentation_v3 Coverage Results" MODIFIED="1734289469087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/lesion_classification$segmentation_v2.coverage" NAME="segmentation_v2 Coverage Results" MODIFIED="1735060297659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lesion_classification$segmentation__1_.coverage" NAME="segmentation (1) Coverage Results" MODIFIED="1734387591904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
   </component>
 </project>

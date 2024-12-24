@@ -179,7 +179,7 @@ async def batch_process_images():
     """Process all images in the input folder and save to output folder."""
     # Setup paths
     input_dir = Path("../images/input")
-    output_dir = Path("clean_images")
+    output_dir = Path("images/clean_images")
 
     # Create output directory if it doesn't exist
     output_dir.mkdir(parents=True, exist_ok=True)
