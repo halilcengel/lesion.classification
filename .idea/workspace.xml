@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acec7c3c-2cc9-4697-b1c3-497d33f79ffd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/segmentation_v2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asymmetry_module/color_asymmetry.py" beforeDir="false" afterPath="$PROJECT_DIR$/asymmetry_module/color_asymmetry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asymmetry_module/shape_asymmetry.py" beforeDir="false" afterPath="$PROJECT_DIR$/asymmetry_module/shape_asymmetry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculate_tds.py" beforeDir="false" afterPath="$PROJECT_DIR$/calculate_tds.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +106,7 @@
       <recent name="$PROJECT_DIR$/v2" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.Unnamed">
+  <component name="RunManager">
     <configuration name="brightness_asymmetry" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="lesion_classification" />
       <option name="ENV_FILES" value="" />
@@ -305,7 +300,7 @@
       <workItem from="1734713194778" duration="2015000" />
       <workItem from="1735059627623" duration="12916000" />
       <workItem from="1735143787117" duration="3162000" />
-      <workItem from="1735577721123" duration="13680000" />
+      <workItem from="1735577721123" duration="14368000" />
     </task>
     <servers />
   </component>
@@ -369,6 +364,6 @@
     <SUITE FILE_PATH="coverage/lesion_classification$level_set_segmentation_v3.coverage" NAME="level_set_segmentation_v3 Coverage Results" MODIFIED="1734289469087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/lesion_classification$segmentation_v2.coverage" NAME="segmentation_v2 Coverage Results" MODIFIED="1735145144012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/lesion_classification$segmentation__1_.coverage" NAME="segmentation (1) Coverage Results" MODIFIED="1734387591904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/lesion_classification$calculate_tds.coverage" NAME="calculate_tds Coverage Results" MODIFIED="1735146305512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lesion_classification$calculate_tds.coverage" NAME="calculate_tds Coverage Results" MODIFIED="1735640189775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
