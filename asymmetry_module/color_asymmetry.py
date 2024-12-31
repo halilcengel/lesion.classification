@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 from skimage import io, color
 from skimage.segmentation import slic, mark_boundaries
@@ -217,7 +218,7 @@ class ColorAsymmetryAnalyzer:
 
         return asymmetry_map
 
-    def visualize_results(self, image_path: str, save_path: str = None) -> None:
+    def visualize_results(self, image: np.ndarray, save_path: str = None) -> None:
         """
         Create comprehensive visualization of the asymmetry analysis.
 
@@ -225,7 +226,6 @@ class ColorAsymmetryAnalyzer:
             image_path: Path to input image
             save_path: Optional path to save the visualization
         """
-        image = io.imread(image_path)
         height, width = image.shape[:2]
         mid_h, mid_w = height // 2, width // 2
 
@@ -340,10 +340,10 @@ class ColorAsymmetryAnalyzer:
 # Usage example:
 if __name__ == "__main__":
     analyzer = ColorAsymmetryAnalyzer(n_segments=200, compactness=10)
-    image_path = "segmentation_v2_masked_images/ISIC_0000042_masked.png"
+    img = cv2.imread('../images/segmented_images/ISIC_0000042_masked.png', cv2.IMREAD_COLOR)
 
     try:
-        h_asym, v_asym, details = analyzer.analyze_image(image_path)
+        h_asym, v_asym, details = analyzer.analyze_image(img)
         print(f"Horizontal Asymmetry: {h_asym}")
         print(f"Vertical Asymmetry: {v_asym}")
         print("\nDetailed Results:")
@@ -352,7 +352,7 @@ if __name__ == "__main__":
             print(f"  Symmetric regions: {results['symmetric_count']}")
             print(f"  Asymmetric regions: {results['asymmetric_count']}")
 
-        analyzer.visualize_results(image_path)
+        analyzer.visualize_results(img)
 
     except Exception as e:
         print(f"Analysis failed: {str(e)}")

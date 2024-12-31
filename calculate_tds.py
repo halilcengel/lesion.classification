@@ -54,7 +54,7 @@ def calculate_tds(image):
 
 
 # Usage
-img = cv2.imread('images/test_malingant.jpg')
+img = cv2.imread('images/segmented_images/ISIC_0024306_masked.png')
 
 
 

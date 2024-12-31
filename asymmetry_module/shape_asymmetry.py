@@ -94,5 +94,5 @@ def visualize_asymmetry_steps(image):
 
 
 if __name__ == '__main__':
-    your_image = cv2.imread('../segmentation_v2_masked_images/ISIC_0000042_masked.png', cv2.IMREAD_GRAYSCALE)
+    your_image = cv2.imread('../images/segmented_images/ISIC_0000042_masked.png', cv2.IMREAD_GRAYSCALE)
     visualize_asymmetry_steps(your_image)
