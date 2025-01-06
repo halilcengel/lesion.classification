@@ -58,7 +58,7 @@ def calculate_total_d_score(img):
     print("Blue-White Veil Area Percentage:", bw_percentage)
     print("D Score:", d_score)
 
-    return d_score
+    return d_score,pn_percentage,dg_percentage,sa_percentage,bw_percentageÏ
 
 
 def calculate_and_visualize(img):

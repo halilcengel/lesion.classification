@@ -1,8 +1,4 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
-from fastapi.responses import StreamingResponse
-import cv2
-import numpy as np
-import io
 import logging
 import tempfile
 import os
