@@ -15,6 +15,15 @@ class ColorInformationExtractor:
             'black': np.array([0, 0, 0])
         }
 
+        self.color_score_thresholds = {
+            'white': {1: 3, 2: 8, 3: 15},
+            'red': {1: 3, 2: 8, 3: 15},
+            'light_brown': {1: 3, 2: 8, 3: 15},
+            'dark_brown': {1: 3, 2: 8, 3: 15},
+            'blue_gray': {1: 3, 2: 8, 3: 15},
+            'black': {1: 3, 2: 8, 3: 15}
+        }
+
     def generate_superpixels(self, image):
         """Generate superpixels using SLIC algorithm with 32 pixels per superpixel"""
         # Calculate number of segments based on image size and 32 pixels per superpixel
@@ -71,6 +80,24 @@ class ColorInformationExtractor:
         colors_present = sum(1 for count in color_counts.values() if count > threshold)
 
         return colors_present
+
+    def calculate_individual_color_scores(self, color_counts):
+        """
+        Calculate score for each individual color based on its presence
+        Returns both color scores and detailed counts
+        """
+        color_scores = {}
+        for color, count in color_counts.items():
+            # Default score is 0
+            score = 0
+            # Check thresholds in descending order
+            for potential_score in [3, 2, 1]:
+                if count >= self.color_score_thresholds[color][potential_score]:
+                    score = potential_score
+                    break
+            color_scores[color] = score
+
+        return color_scores
 
 
 if __name__ == "__main__":
