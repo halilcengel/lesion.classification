@@ -4,7 +4,7 @@ from segmentation_v2 import ImageProcessing
 
 # Define paths
 base_dir = Path("images/ISIC_2017")
-train_clean_dir = base_dir / "Test"
+train_clean_dir = base_dir / "organized"
 segmented_dir = base_dir / "masks"
 output_dir = base_dir / "masked_lesions"
 

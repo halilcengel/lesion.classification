@@ -12,6 +12,8 @@ from asymmetry_module.shape_asymmetry import rotate_image, calculate_asymmetry
 from border_irregularity_module.old_main import calculate_total_b_score
 from border_irregularity_module.utils import detect_border
 
+from calculate_tds import calculate_tds
+
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 
@@ -221,6 +223,35 @@ async def border_irregularity(file: UploadFile = File(...)):
     except Exception as e:
         logging.error(f"Error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/process-lesion")
+async def process_lesion(file: UploadFile = File(...)):
+    """
+    Endpoint to process an image of a lesion and calculate TDS.
+
+    Parameters:
+    - file: Image file to process
+
+    Returns:
+    - JSON response with TDS and classification
+    """
+    try:
+        contents = await file.read()
+        nparr = np.frombuffer(contents, np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+        if img is None:
+            raise HTTPException(status_code=400, detail="Invalid image file")
+
+        # Calculate TDS
+        tds_result = calculate_tds(img)
+
+        return JSONResponse(tds_result)
+
+    except Exception as e:
+        logging.error(f"Error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import uvicorn

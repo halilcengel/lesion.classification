@@ -1,119 +1,31 @@
 image,category,tds_score,predicted_category,true_category,asymmetry_score,border_score,color_score,differential_structures_score
-ISIC_0010512.jpg,actinic keratosis,4.85,Suspicious,Benign,2.0,5,1,2.5
-ISIC_0010889.jpg,actinic keratosis,5.25,Suspicious,Benign,2.0,4,2,2.5
-ISIC_0024468.jpg,actinic keratosis,5.45,Suspicious,Benign,2.0,6,2,2.5
-ISIC_0024470.jpg,actinic keratosis,5.65,Malignant,Benign,2.0,3,2,3.5
-ISIC_0024511.jpg,actinic keratosis,5.15,Suspicious,Benign,2.0,8,1,2.5
-ISIC_0024646.jpg,actinic keratosis,5.25,Suspicious,Benign,2.0,4,1,3.5
-ISIC_0024654.jpg,actinic keratosis,4.2,Benign,Benign,1.5,5,1,2.5
-ISIC_0024707.jpg,actinic keratosis,5.75,Malignant,Benign,2.0,4,2,3.5
-ISIC_0024763.jpg,actinic keratosis,4.5,Benign,Benign,2.0,4,2,1.0
-ISIC_0024771.jpg,actinic keratosis,5.85,Malignant,Benign,2.0,5,2,3.5
-ISIC_0024800.jpg,actinic keratosis,5.5,Malignant,Benign,2.0,4,1,4.0
-ISIC_0024913.jpg,actinic keratosis,5.45,Suspicious,Benign,2.0,6,2,2.5
-ISIC_0024948.jpg,actinic keratosis,6.05,Malignant,Benign,2.0,7,2,3.5
-ISIC_0025368.jpg,actinic keratosis,5.45,Suspicious,Benign,2.0,6,2,2.5
-ISIC_0025427.jpg,actinic keratosis,5.35,Suspicious,Benign,2.0,5,2,2.5
-ISIC_0025605.jpg,actinic keratosis,4.85,Suspicious,Benign,2.0,5,2,1.5
-ISIC_0024331.jpg,basal cell carcinoma,5.75,Malignant,Malignant,2.0,4,2,3.5
-ISIC_0024332.jpg,basal cell carcinoma,4.75,Suspicious,Malignant,2.0,4,2,1.5
-ISIC_0024345.jpg,basal cell carcinoma,5.35,Suspicious,Malignant,2.0,5,2,2.5
-ISIC_0024360.jpg,basal cell carcinoma,3.45,Benign,Malignant,1.5,10,1,0.0
-ISIC_0024403.jpg,basal cell carcinoma,4.85,Suspicious,Malignant,2.0,5,2,1.5
-ISIC_0024411.jpg,basal cell carcinoma,6.05,Malignant,Malignant,2.0,7,2,3.5
-ISIC_0024431.jpg,basal cell carcinoma,3.05,Benign,Malignant,1.5,6,1,0.0
-ISIC_0024432.jpg,basal cell carcinoma,4.8,Suspicious,Malignant,1.5,11,1,2.5
-ISIC_0024436.jpg,basal cell carcinoma,3.6,Benign,Malignant,1.5,4,1,1.5
-ISIC_0024443.jpg,basal cell carcinoma,5.85,Malignant,Malignant,2.0,5,2,3.5
-ISIC_0024448.jpg,basal cell carcinoma,5.35,Suspicious,Malignant,2.0,5,2,2.5
-ISIC_0024452.jpg,basal cell carcinoma,3.6,Benign,Malignant,1.5,4,1,1.5
-ISIC_0024454.jpg,basal cell carcinoma,4.95,Suspicious,Malignant,2.0,6,2,1.5
-ISIC_0024457.jpg,basal cell carcinoma,4.55,Benign,Malignant,2.0,7,1,1.5
-ISIC_0024461.jpg,basal cell carcinoma,5.35,Suspicious,Malignant,2.0,5,1,3.5
-ISIC_0024472.jpg,basal cell carcinoma,5.65,Malignant,Malignant,2.0,8,2,2.5
-ISIC_0001114.jpg,dermatofibroma,4.85,Suspicious,Benign,2.0,5,2,1.5
-ISIC_0001130.jpg,dermatofibroma,4.1,Benign,Benign,1.5,4,1,2.5
-ISIC_0011410.jpg,dermatofibroma,4.85,Suspicious,Benign,2.0,5,2,1.5
-ISIC_0011433.jpg,dermatofibroma,5.1,Suspicious,Benign,1.5,4,2,3.5
-ISIC_0011478.jpg,dermatofibroma,4.2,Benign,Benign,1.5,5,1,2.5
-ISIC_0011677.jpg,dermatofibroma,5.6,Malignant,Benign,2.0,5,2,3.0
-ISIC_0011865.jpg,dermatofibroma,4.2,Benign,Benign,1.5,5,1,2.5
-ISIC_0024318.jpg,dermatofibroma,5.25,Suspicious,Benign,2.0,4,2,2.5
-ISIC_0024330.jpg,dermatofibroma,5.15,Suspicious,Benign,2.0,3,2,2.5
-ISIC_0024386.jpg,dermatofibroma,4.0,Benign,Benign,2.0,4,1,1.0
-ISIC_0024396.jpg,dermatofibroma,5.5,Malignant,Benign,2.0,4,1,4.0
-ISIC_0024553.jpg,dermatofibroma,5.35,Suspicious,Benign,2.0,5,1,3.5
-ISIC_0024845.jpg,dermatofibroma,3.6,Benign,Benign,1.5,4,1,1.5
-ISIC_0024973.jpg,dermatofibroma,5.35,Suspicious,Benign,2.0,5,2,2.5
-ISIC_0024994.jpg,dermatofibroma,5.55,Malignant,Benign,2.0,7,2,2.5
-ISIC_0025154.jpg,dermatofibroma,5.2,Suspicious,Benign,2.0,6,2,2.0
-ISIC_0000002.jpg,melanoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
-ISIC_0000004.jpg,melanoma,6.3,Malignant,Malignant,2.0,2,2,5.0
-ISIC_0000013.jpg,melanoma,4.0,Benign,Malignant,1.5,3,1,2.5
-ISIC_0000022.jpg,melanoma,4.2,Benign,Malignant,1.5,5,1,2.5
-ISIC_0000026.jpg,melanoma,6.0,Malignant,Malignant,2.0,4,2,4.0
-ISIC_0000029.jpg,melanoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
-ISIC_0000030.jpg,melanoma,6.3,Malignant,Malignant,2.0,2,2,5.0
-ISIC_0000031.jpg,melanoma,5.05,Suspicious,Malignant,2.0,2,2,2.5
-ISIC_0000035.jpg,melanoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
-ISIC_0000036.jpg,melanoma,4.75,Suspicious,Malignant,2.0,4,1,2.5
-ISIC_0000040.jpg,melanoma,2.75,Benign,Malignant,1.5,3,1,0.0
-ISIC_0000043.jpg,melanoma,5.25,Suspicious,Malignant,2.0,4,2,2.5
-ISIC_0000046.jpg,melanoma,5.25,Suspicious,Malignant,2.0,4,2,2.5
-ISIC_0000049.jpg,melanoma,5.3,Suspicious,Malignant,2.0,2,2,3.0
-ISIC_0000054.jpg,melanoma,4.5,Benign,Malignant,1.5,3,2,2.5
-ISIC_0000056.jpg,melanoma,4.6,Benign,Malignant,1.5,4,2,2.5
-ISIC_0000000.jpg,nevus,5.65,Malignant,Benign,2.0,3,3,2.5
-ISIC_0000001.jpg,nevus,2.65,Benign,Benign,1.5,2,1,0.0
-ISIC_0000003.jpg,nevus,5.15,Suspicious,Benign,2.0,3,2,2.5
-ISIC_0000005.jpg,nevus,3.6,Benign,Benign,1.5,4,1,1.5
-ISIC_0000006.jpg,nevus,2.65,Benign,Benign,1.5,2,1,0.0
-ISIC_0000007.jpg,nevus,2.65,Benign,Benign,1.5,2,1,0.0
-ISIC_0000008.jpg,nevus,5.05,Suspicious,Benign,2.0,2,2,2.5
-ISIC_0000009.jpg,nevus,4.0,Benign,Benign,1.5,3,1,2.5
-ISIC_0000010.jpg,nevus,2.65,Benign,Benign,1.5,2,1,0.0
-ISIC_0000011.jpg,nevus,3.9,Benign,Benign,1.5,2,1,2.5
-ISIC_0000012.jpg,nevus,2.75,Benign,Benign,1.5,3,1,0.0
-ISIC_0000014.jpg,nevus,5.35,Suspicious,Benign,2.0,5,2,2.5
-ISIC_0000015.jpg,nevus,4.0,Benign,Benign,1.5,3,1,2.5
-ISIC_0000016.jpg,nevus,3.9,Benign,Benign,1.5,2,1,2.5
-ISIC_0000017.jpg,nevus,3.9,Benign,Benign,1.5,2,1,2.5
-ISIC_0000018.jpg,nevus,4.5,Benign,Benign,1.5,3,2,2.5
-ISIC_0024312.jpg,pigmented benign keratosis,5.0,Suspicious,Benign,2.0,4,1,3.0
-ISIC_0024324.jpg,pigmented benign keratosis,3.7,Benign,Benign,1.5,5,1,1.5
-ISIC_0024336.jpg,pigmented benign keratosis,4.75,Suspicious,Benign,2.0,4,1,2.5
-ISIC_0024337.jpg,pigmented benign keratosis,5.55,Malignant,Benign,2.0,7,1,3.5
-ISIC_0024338.jpg,pigmented benign keratosis,6.0,Malignant,Benign,2.0,9,2,3.0
-ISIC_0024358.jpg,pigmented benign keratosis,3.6,Benign,Benign,1.5,4,1,1.5
-ISIC_0024371.jpg,pigmented benign keratosis,4.25,Benign,Benign,2.0,4,1,1.5
-ISIC_0024381.jpg,pigmented benign keratosis,4.75,Suspicious,Benign,2.0,4,1,2.5
-ISIC_0024382.jpg,pigmented benign keratosis,5.35,Suspicious,Benign,2.0,5,2,2.5
-ISIC_0024383.jpg,pigmented benign keratosis,4.5,Benign,Benign,1.5,3,2,2.5
-ISIC_0024408.jpg,pigmented benign keratosis,2.95,Benign,Benign,1.5,5,1,0.0
-ISIC_0024409.jpg,pigmented benign keratosis,4.2,Benign,Benign,1.5,5,1,2.5
-ISIC_0024412.jpg,pigmented benign keratosis,5.0,Suspicious,Benign,2.0,4,2,2.0
-ISIC_0024420.jpg,pigmented benign keratosis,4.45,Benign,Benign,2.0,6,1,1.5
-ISIC_0024422.jpg,pigmented benign keratosis,4.85,Suspicious,Benign,2.0,5,2,1.5
-ISIC_0024426.jpg,pigmented benign keratosis,4.85,Suspicious,Benign,2.0,5,2,1.5
-ISIC_0010803.jpg,seborrheic keratosis,6.25,Malignant,Benign,2.0,9,2,3.5
-ISIC_0010808.jpg,seborrheic keratosis,4.55,Benign,Benign,2.0,7,1,1.5
-ISIC_0010809.jpg,seborrheic keratosis,5.65,Malignant,Benign,2.0,8,2,2.5
-ISIC_0011593.jpg,squamous cell carcinoma,4.2,Benign,Malignant,1.5,5,1,2.5
-ISIC_0011726.jpg,squamous cell carcinoma,4.75,Suspicious,Malignant,2.0,4,1,2.5
-ISIC_0011750.jpg,squamous cell carcinoma,4.7,Benign,Malignant,1.5,5,1,3.5
-ISIC_0011751.jpg,squamous cell carcinoma,3.7,Benign,Malignant,1.5,5,1,1.5
-ISIC_0012079.jpg,squamous cell carcinoma,4.9,Suspicious,Malignant,1.5,7,1,3.5
-ISIC_0024329.jpg,squamous cell carcinoma,5.25,Suspicious,Malignant,2.0,4,2,2.5
-ISIC_0024372.jpg,squamous cell carcinoma,4.75,Suspicious,Malignant,2.0,4,2,1.5
-ISIC_0024418.jpg,squamous cell carcinoma,2.65,Benign,Malignant,1.5,2,1,0.0
-ISIC_0024450.jpg,squamous cell carcinoma,4.05,Benign,Malignant,1.5,16,1,0.0
-ISIC_0024463.jpg,squamous cell carcinoma,5.25,Suspicious,Malignant,2.0,4,1,3.5
-ISIC_0024517.jpg,squamous cell carcinoma,5.35,Suspicious,Malignant,2.0,5,1,3.5
-ISIC_0024522.jpg,squamous cell carcinoma,5.1,Suspicious,Malignant,2.0,5,1,3.0
-ISIC_0024539.jpg,squamous cell carcinoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
-ISIC_0024562.jpg,squamous cell carcinoma,3.6,Benign,Malignant,1.5,4,1,1.5
-ISIC_0024575.jpg,squamous cell carcinoma,5.35,Suspicious,Malignant,2.0,5,2,2.5
-ISIC_0024579.jpg,squamous cell carcinoma,4.85,Suspicious,Malignant,2.0,5,1,2.5
-ISIC_0024370.jpg,vascular lesion,4.0,Benign,Benign,1.5,3,1,2.5
-ISIC_0024375.jpg,vascular lesion,5.95,Malignant,Benign,2.0,6,2,3.5
-ISIC_0024402.jpg,vascular lesion,6.3,Malignant,Benign,2.0,7,2,4.0
+ISIC_0000002.jpg,Melanoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
+ISIC_0000004.jpg,Melanoma,6.3,Malignant,Malignant,2.0,2,2,5.0
+ISIC_0000013.jpg,Melanoma,4.0,Benign,Malignant,1.5,3,1,2.5
+ISIC_0000022.jpg,Melanoma,5.8,Malignant,Malignant,2.0,2,2,4.0
+ISIC_0000026.jpg,Melanoma,6.0,Malignant,Malignant,2.0,4,2,4.0
+ISIC_0000029.jpg,Melanoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
+ISIC_0000030.jpg,Melanoma,6.3,Malignant,Malignant,2.0,2,2,5.0
+ISIC_0000031.jpg,Melanoma,5.05,Suspicious,Malignant,2.0,2,2,2.5
+ISIC_0000035.jpg,Melanoma,5.15,Suspicious,Malignant,2.0,3,2,2.5
+ISIC_0000036.jpg,Melanoma,5.3,Suspicious,Malignant,2.0,2,1,4.0
+ISIC_0000000.jpg,Nevus,5.65,Malignant,Benign,2.0,3,3,2.5
+ISIC_0000001.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000003.jpg,Nevus,5.05,Suspicious,Benign,2.0,2,2,2.5
+ISIC_0000006.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000007.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000008.jpg,Nevus,5.05,Suspicious,Benign,2.0,2,2,2.5
+ISIC_0000009.jpg,Nevus,4.0,Benign,Benign,1.5,3,1,2.5
+ISIC_0000010.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000011.jpg,Nevus,3.9,Benign,Benign,1.5,2,1,2.5
+ISIC_0000012.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012090.jpg,Seborrheic Keratosis,4.0,Benign,Benign,1.5,3,1,2.5
+ISIC_0012103.jpg,Seborrheic Keratosis,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012117.jpg,Seborrheic Keratosis,4.0,Benign,Benign,1.5,3,2,1.5
+ISIC_0012155.jpg,Seborrheic Keratosis,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012170.jpg,Seborrheic Keratosis,5.15,Suspicious,Benign,1.5,2,2,4.0
+ISIC_0012172.jpg,Seborrheic Keratosis,5.9,Malignant,Benign,2.0,3,2,4.0
+ISIC_0012173.jpg,Seborrheic Keratosis,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012183.jpg,Seborrheic Keratosis,3.4,Benign,Benign,1.5,2,1,1.5
+ISIC_0012214.jpg,Seborrheic Keratosis,2.75,Benign,Benign,1.5,3,1,0.0
+ISIC_0012217.jpg,Seborrheic Keratosis,3.5,Benign,Benign,1.5,3,1,1.5

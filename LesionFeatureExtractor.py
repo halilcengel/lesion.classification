@@ -1,14 +1,10 @@
 import asyncio
-import os
-import pandas as pd
+
 from tqdm import tqdm
 import numpy as np
-import cv2
 from typing import Dict, Tuple
 
 from typing import List
-
-from hair_removal import demo_hair_removal, remove_hair_with_visualization
 
 from asymmetry_module.color_asymmetry import ColorAsymmetryAnalyzer
 from asymmetry_module.utils import rotate_image, split_horizontally, split_vertically
@@ -21,7 +17,7 @@ from differential_structures_module.dots_and_globs_detection import detect_dots_
 from differential_structures_module.structless_area_detection import detect_structureless_area
 from differential_structures_module.utils import calculate_area_percentage
 
-from border_irregularity_module import main
+from border_irregularity_module.main import calculate_total_b_score
 
 from color_module.color import ColorInformationExtractor
 
@@ -46,11 +42,31 @@ class LesionFeatureExtractor:
         )
         self.border_segments = border_segments
         self.color_extractor = ColorInformationExtractor()
+        # Cache for preprocessed images
+        self._cache = {}
+        
+    def _preprocess_image(self, image: np.ndarray) -> Dict[str, np.ndarray]:
+        """Preprocess image once and cache results for reuse."""
+        if id(image) in self._cache:
+            return self._cache[id(image)]
+            
+        # Convert to grayscale if needed
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) if len(image.shape) == 3 else image
+        
+        # Store preprocessed versions
+        processed = {
+            'original': image,
+            'gray': gray,
+            'rotated': rotate_image(gray)
+        }
+        
+        self._cache[id(image)] = processed
+        return processed
 
     def calculate_color_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from color-based asymmetry analysis."""
-        h_asym, v_asym, details = self.color_analyzer.analyze_image(image)
         print("Calculating color features")
+        h_asym, v_asym, details = self.color_analyzer.analyze_image(image)
         features = {
             'color_horizontal_symmetric_ratio': details['horizontal']['symmetric_count'] / \
                                                 (details['horizontal']['symmetric_count'] + details['horizontal'][
@@ -66,17 +82,18 @@ class LesionFeatureExtractor:
     def calculate_brightness_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from brightness-based asymmetry analysis."""
         print("Calculating brightness features")
-        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) if len(image.shape) == 3 else image
-        rotated = rotate_image(gray_image)
+        processed = self._preprocess_image(image)
+        rotated = processed['rotated']
 
         top_half, bottom_half = split_horizontally(rotated)
         left_half, right_half = split_vertically(rotated)
 
-        top_intensity = calculate_asymmetry_metrics(top_half)
-        bottom_intensity = calculate_asymmetry_metrics(bottom_half)
-        left_intensity = calculate_asymmetry_metrics(left_half)
-        right_intensity = calculate_asymmetry_metrics(right_half)
-        total_intensity = rotated.mean()
+        # Vectorized computation using numpy
+        top_intensity = np.mean(top_half)
+        bottom_intensity = np.mean(bottom_half)
+        left_intensity = np.mean(left_half)
+        right_intensity = np.mean(right_half)
+        total_intensity = np.mean(rotated)
 
         features = {
             'brightness_vertical_asymmetry': (abs(top_intensity - bottom_intensity) / total_intensity) * 100,
@@ -113,10 +130,8 @@ class LesionFeatureExtractor:
     def calculate_shape_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from shape-based asymmetry analysis."""
         print("calculating shape features")
-        if len(image.shape) == 3:
-            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        else:
-            gray = image
+        processed = self._preprocess_image(image)
+        gray = processed['gray']
 
         vertical_diff = calculate_asymmetry(gray, split_by='vertical')
         horizontal_diff = calculate_asymmetry(gray, split_by='horizontal')
@@ -132,7 +147,7 @@ class LesionFeatureExtractor:
         """Extract features from border irregularity analysis."""
         # Convert to grayscale if needed
 
-        total_score = main.calculate_total_b_score(image)
+        total_score = calculate_total_b_score(image)
 
         features = {
             'border_total_irregularity': total_score,
@@ -212,7 +227,7 @@ async def main():
     extractor = LesionFeatureExtractor()
 
     # Base directory containing all lesion type folders
-    base_dir = os.path.join(os.path.dirname(__file__), "images", "ISIC_2018", "Train_masked_lesions")
+    base_dir = os.path.join(os.path.dirname(__file__), "images", "ISIC_2017", "masked_lesions")
 
     # Lists to store features and labels
     all_features = []
@@ -302,8 +317,6 @@ async def not_main():
             raise FileNotFoundError(f"Could not read image at {img_path}")
 
         # Remove hair from the image using remove_hair_with_visualization function
-        cleaned_image = await remove_hair_with_visualization(image)
-        image = cleaned_image['result']  # Get the cleaned image from the result key
 
         processor = ImageProcessing(image)
         thresholded = processor.global_thresholding()

@@ -335,21 +335,21 @@ class ColorAsymmetryAnalyzer:
         plt.show()
 
 # Usage example:
-if __name__ == "__main__":
-    analyzer = ColorAsymmetryAnalyzer(n_segments=200, compactness=10)
-    img = cv2.imread('../images/segmented_images/ISIC_0000042_masked.png', cv2.IMREAD_COLOR)
+#if __name__ == "__main__":
+    #analyzer = ColorAsymmetryAnalyzer(n_segments=200, compactness=10)
+    #img = cv2.imread('../images/segmented_images/ISIC_0000042_masked.png', cv2.IMREAD_COLOR)
 
-    try:
-        h_asym, v_asym, details = analyzer.analyze_image(img)
-        print(f"Horizontal Asymmetry: {h_asym}")
-        print(f"Vertical Asymmetry: {v_asym}")
-        print("\nDetailed Results:")
-        for direction, results in details.items():
-            print(f"\n{direction.title()} Analysis:")
-            print(f"  Symmetric regions: {results['symmetric_count']}")
-            print(f"  Asymmetric regions: {results['asymmetric_count']}")
+    #try:
+        #h_asym, v_asym, details = analyzer.analyze_image(img)
+        #print(f"Horizontal Asymmetry: {h_asym}")
+        #print(f"Vertical Asymmetry: {v_asym}")
+        #print("\nDetailed Results:")
+        #for direction, results in details.items():
+        #    print(f"\n{direction.title()} Analysis:")
+        #    print(f"  Symmetric regions: {results['symmetric_count']}")
+        #    print(f"  Asymmetric regions: {results['asymmetric_count']}")
 
-        analyzer.visualize_results(img)
+        #analyzer.visualize_results(img)
 
-    except Exception as e:
-        print(f"Analysis failed: {str(e)}")
+    #except Exception as e:
+    #    print(f"Analysis failed: {str(e)}")

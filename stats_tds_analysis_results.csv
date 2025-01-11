@@ -1,0 +1,23 @@
+image,category,tds_score,predicted_category,true_category,asymmetry_score,border_score,color_score,differential_structures_score
+ISIC_0000004.jpg,Melanoma,6.3,Malignant,Benign,2.0,2,2,5.0
+ISIC_0000013.jpg,Melanoma,4.0,Benign,Benign,1.5,3,1,2.5
+ISIC_0000022.jpg,Melanoma,5.8,Malignant,Benign,2.0,2,2,4.0
+ISIC_0000026.jpg,Melanoma,6.0,Malignant,Benign,2.0,4,2,4.0
+ISIC_0000030.jpg,Melanoma,6.3,Malignant,Benign,2.0,2,2,5.0
+ISIC_0000000.jpg,Nevus,5.65,Malignant,Benign,2.0,3,3,2.5
+ISIC_0000001.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000006.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000007.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000009.jpg,Nevus,4.0,Benign,Benign,1.5,3,1,2.5
+ISIC_0000010.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0000011.jpg,Nevus,3.9,Benign,Benign,1.5,2,1,2.5
+ISIC_0000012.jpg,Nevus,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012090.jpg,Seborrheic Keratosis,4.0,Benign,Benign,1.5,3,1,2.5
+ISIC_0012103.jpg,Seborrheic Keratosis,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012117.jpg,Seborrheic Keratosis,4.0,Benign,Benign,1.5,3,2,1.5
+ISIC_0012155.jpg,Seborrheic Keratosis,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012172.jpg,Seborrheic Keratosis,5.9,Malignant,Benign,2.0,3,2,4.0
+ISIC_0012173.jpg,Seborrheic Keratosis,2.65,Benign,Benign,1.5,2,1,0.0
+ISIC_0012183.jpg,Seborrheic Keratosis,3.4,Benign,Benign,1.5,2,1,1.5
+ISIC_0012214.jpg,Seborrheic Keratosis,2.75,Benign,Benign,1.5,3,1,0.0
+ISIC_0012217.jpg,Seborrheic Keratosis,3.5,Benign,Benign,1.5,3,1,1.5
