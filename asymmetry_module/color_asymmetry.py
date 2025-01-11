@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from skimage import io, color
 from skimage.segmentation import slic, mark_boundaries
 import matplotlib.pyplot as plt
 from typing import Tuple, List, Union
@@ -8,7 +7,7 @@ import warnings
 
 
 class ColorAsymmetryAnalyzer:
-    def __init__(self, n_segments: int = 200, compactness: int = 10, color_threshold: float = 1e-3):
+    def __init__(self, n_segments: int = 50, compactness: int = 10, color_threshold: float = 1e-3):
         """
         Initialize the asymmetry analyzer.
 
@@ -42,7 +41,6 @@ class ColorAsymmetryAnalyzer:
                 median_val = np.median(region_pixels, axis=0)
                 median_colors.append(median_val)
             else:
-                warnings.warn(f"Empty region found with ID {region_id}")
                 median_colors.append(np.zeros(image.shape[-1]))
 
         return median_colors
@@ -220,16 +218,16 @@ class ColorAsymmetryAnalyzer:
 
     def visualize_results(self, image: np.ndarray, save_path: str = None) -> None:
         """
-        Create comprehensive visualization of the asymmetry analysis.
+        Asimetri analizinin kapsamlı görselleştirmesini oluşturur.
 
         Args:
-            image_path: Path to input image
-            save_path: Optional path to save the visualization
+            image_path: Girdi görüntüsünün yolu
+            save_path: Görselleştirmeyi kaydetmek için isteğe bağlı yol
         """
         height, width = image.shape[:2]
         mid_h, mid_w = height // 2, width // 2
 
-        # Generate SLIC segmentations
+        # SLIC segmentasyonlarını oluştur
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             labels = {
@@ -239,7 +237,7 @@ class ColorAsymmetryAnalyzer:
                 'right': slic(image[:, mid_w:], n_segments=self.n_segments, compactness=self.compactness)
             }
 
-        # Create asymmetry maps
+        # Asimetri haritalarını oluştur
         h_asymmetry_map = self.create_asymmetry_map(
             image, labels['top'], labels['bottom'], 'horizontal'
         )
@@ -247,95 +245,94 @@ class ColorAsymmetryAnalyzer:
             image, labels['left'], labels['right'], 'vertical'
         )
 
-        # Create visualization
+        # Görselleştirmeyi oluştur
         fig = plt.figure(figsize=(15, 10))
         gs = fig.add_gridspec(2, 3)
 
-        # Original image with superpixel boundaries
+        # Süperpiksel sınırları ile orijinal görüntü
         ax_orig = fig.add_subplot(gs[0, 0])
 
-        # Create combined boundaries visualization
+        # Birleştirilmiş sınırlar görselleştirmesini oluştur
         image_float = image.astype(np.float64) / 255.0
 
-        # Draw boundaries for each half with different colors
+        # Her yarım için farklı renklerle sınırları çiz
         if direction == 'horizontal':
             top_overlay = self.draw_boundaries(
                 image_float[:mid_h, :],
                 labels['top'],
-                color=(1, 1, 0),  # Yellow
+                color=(1, 1, 0),  # Sarı
                 thickness=1.5
             )
             bottom_overlay = self.draw_boundaries(
                 image_float[mid_h:, :],
                 labels['bottom'],
-                color=(0, 1, 1),  # Cyan
+                color=(0, 1, 1),  # Camgöbeği
                 thickness=1.5
             )
 
-            # Combine the halves
+            # Yarımları birleştir
             combined_img = np.vstack([top_overlay, bottom_overlay])
         else:
             left_overlay = self.draw_boundaries(
                 image_float[:, :mid_w],
                 labels['left'],
-                color=(1, 0.5, 0),  # Orange
+                color=(1, 0.5, 0),  # Turuncu
                 thickness=1.5
             )
             right_overlay = self.draw_boundaries(
                 image_float[:, mid_w:],
                 labels['right'],
-                color=(0.5, 0, 1),  # Purple
+                color=(0.5, 0, 1),  # Mor
                 thickness=1.5
             )
 
-            # Combine the halves
+            # Yarımları birleştir
             combined_img = np.hstack([left_overlay, right_overlay])
 
         ax_orig.imshow(combined_img)
-        ax_orig.set_title("Original Image with Superpixel Boundaries")
+        ax_orig.set_title("Süperpiksel Sınırları ile Orijinal Görüntü")
         ax_orig.axis("off")
 
-        # Horizontal analysis
+        # Yatay analiz
         ax_h = fig.add_subplot(gs[0, 1])
         ax_h.imshow(h_asymmetry_map)
-        ax_h.set_title("Horizontal Asymmetry Analysis")
+        ax_h.set_title("Yatay Asimetri Analizi")
         ax_h.axis("off")
 
-        # Vertical analysis
+        # Dikey analiz
         ax_v = fig.add_subplot(gs[0, 2])
         ax_v.imshow(v_asymmetry_map)
-        ax_v.set_title("Vertical Asymmetry Analysis")
+        ax_v.set_title("Dikey Asimetri Analizi")
         ax_v.axis("off")
 
-        # SLIC segmentations
+        # SLIC segmentasyonları
         ax_top = fig.add_subplot(gs[1, 0])
         ax_top.imshow(labels['top'], cmap='nipy_spectral')
-        ax_top.set_title("Top Half Segmentation")
+        ax_top.set_title("Üst Yarı Segmentasyonu")
         ax_top.axis("off")
 
         ax_bottom = fig.add_subplot(gs[1, 1])
         ax_bottom.imshow(labels['bottom'], cmap='nipy_spectral')
-        ax_bottom.set_title("Bottom Half Segmentation")
+        ax_bottom.set_title("Alt Yarı Segmentasyonu")
         ax_bottom.axis("off")
 
-        # Legend
+        # Açıklama
         ax_legend = fig.add_subplot(gs[1, 2])
         ax_legend.axis("off")
         legend_elements = [
-            plt.Rectangle((0, 0), 1, 1, facecolor='green', label='Matching Regions'),
-            plt.Rectangle((0, 0), 1, 1, facecolor='red', label='Non-matching Regions'),
-            plt.Rectangle((0, 0), 1, 1, facecolor='yellow', label='Unmatched Regions'),
-            plt.Rectangle((0, 0), 1, 1, facecolor='yellow', alpha=0.5, label='Top/Left Boundaries'),
-            plt.Rectangle((0, 0), 1, 1, facecolor='cyan', alpha=0.5, label='Bottom/Right Boundaries')
+            plt.Rectangle((0, 0), 1, 1, facecolor='green', label='Eşleşen Bölgeler'),
+            plt.Rectangle((0, 0), 1, 1, facecolor='red', label='Eşleşmeyen Bölgeler'),
+            plt.Rectangle((0, 0), 1, 1, facecolor='yellow', label='Eşleştirilmemiş Bölgeler'),
+            plt.Rectangle((0, 0), 1, 1, facecolor='yellow', alpha=0.5, label='Üst/Sol Sınırlar'),
+            plt.Rectangle((0, 0), 1, 1, facecolor='cyan', alpha=0.5, label='Alt/Sağ Sınırlar')
         ]
         ax_legend.legend(handles=legend_elements, loc='center')
-        ax_legend.set_title("Color Legend")
+        ax_legend.set_title("Renk Açıklamaları")
 
         plt.tight_layout()
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.show()
-
 
 # Usage example:
 if __name__ == "__main__":

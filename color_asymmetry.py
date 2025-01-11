@@ -7,7 +7,7 @@ import warnings
 
 
 class AsymmetryAnalyzer:
-    def __init__(self, n_segments: int = 200, compactness: int = 10, color_threshold: float = 1e-3):
+    def __init__(self, n_segments: int = 50, compactness: int = 10, color_threshold: float = 1e-3):
         """
         Initialize the asymmetry analyzer.
 
@@ -41,7 +41,7 @@ class AsymmetryAnalyzer:
                 median_val = np.median(region_pixels, axis=0)
                 median_colors.append(median_val)
             else:
-                warnings.warn(f"Empty region found with ID {region_id}")
+                #warnings.warn(f"Empty region found with ID {region_id}")
                 median_colors.append(np.zeros(image.shape[-1]))
 
         return median_colors

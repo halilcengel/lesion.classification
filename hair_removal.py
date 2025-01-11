@@ -5,8 +5,7 @@ from pathlib import Path
 
 import numpy as np
 import cv2
-from scipy import ndimage
-import matplotlib.pyplot as plt
+
 from fastapi import UploadFile
 from typing import Dict, Union
 
@@ -32,19 +31,21 @@ async def remove_hair_with_visualization(image: np.ndarray, kernel_size=20, thre
     """
     steps = {'original': image.copy()}
 
+    preprocessed = preprocess_image(image)
+
     # Convert to grayscale if color image
     if len(image.shape) == 3:
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(preprocessed, cv2.COLOR_BGR2GRAY)
         steps['grayscale'] = gray
     else:
-        gray = image.copy()
+        gray = preprocessed.copy()
         steps['grayscale'] = gray
 
     # Create structural element for morphological operations
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_size, kernel_size))
 
     # Apply blackhat operation
-    blackhat = cv2.morphologyEx(gray, cv2.MORPH_BLACKHAT, kernel)
+    blackhat = cv2.morphologyEx(preprocessed, cv2.MORPH_BLACKHAT, kernel)
     steps['blackhat'] = blackhat
 
     # Threshold to create binary mask
@@ -54,13 +55,22 @@ async def remove_hair_with_visualization(image: np.ndarray, kernel_size=20, thre
     # Dilate the hair mask
     kernel_dilate = np.ones((2, 2), np.uint8)
     hair_mask = cv2.dilate(threshold_image, kernel_dilate, iterations=1)
+
+    hair_mask = hair_mask.astype(np.uint8)  # Ensure 8-bit
+
+    # Additional check to ensure single channel
+    if len(hair_mask.shape) > 2:
+        hair_mask = cv2.cvtColor(hair_mask, cv2.COLOR_BGR2GRAY)
+
+    steps['mask'] = hair_mask
+
     steps['mask'] = hair_mask
 
     # Apply inpainting
     if len(image.shape) == 3:
         result = cv2.inpaint(image, hair_mask, 5, cv2.INPAINT_TELEA)
     else:
-        result = cv2.inpaint(gray, hair_mask, 5, cv2.INPAINT_TELEA)
+        result = cv2.inpaint(image, hair_mask, 5, cv2.INPAINT_TELEA)
     steps['result'] = result
 
     return steps
@@ -119,11 +129,8 @@ async def demo_hair_removal(file: Union[UploadFile, np.ndarray]) -> Dict[str, Un
         if image is None:
             raise ValueError("Could not read image")
 
-        # Preprocess image
-        preprocessed = preprocess_image(image)
-
         # Get all steps
-        steps = await remove_hair_with_visualization(preprocessed)
+        steps = await remove_hair_with_visualization(image)
 
         # Convert result to bytes
         _, img_encoded = cv2.imencode('.png', steps['result'])
@@ -137,8 +144,9 @@ async def demo_hair_removal(file: Union[UploadFile, np.ndarray]) -> Dict[str, Un
     except Exception as e:
         raise Exception(f"Error processing image: {str(e)}")
 
+
 async def process_single_image(input_path, output_path):
-    """Process a single image and save the cleaned version."""
+    """Process a single image and save all intermediate steps."""
     try:
         # Load image
         image = cv2.imread(str(input_path))
@@ -151,7 +159,6 @@ async def process_single_image(input_path, output_path):
 
         # Process the image
         results = await demo_hair_removal(image)
-
         # Convert result back to displayable image
         clean_image_bytes = results['clean']
         clean_image = cv2.imdecode(
@@ -176,10 +183,10 @@ async def process_single_image(input_path, output_path):
 
 
 async def batch_process_images():
-    """Process all images in the input folder and save to output folder."""
+    """Process all images in the input folder and save steps to output folder."""
     # Setup paths
-    input_dir = Path("images")
-    output_dir = Path("images/clean_images")
+    input_dir = Path("images/ISIC_2018/Train/melanoma")
+    output_dir = Path("images/ISIC_2018/Train_Clean/melanoma")
 
     # Create output directory if it doesn't exist
     output_dir.mkdir(parents=True, exist_ok=True)

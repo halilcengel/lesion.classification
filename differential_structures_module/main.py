@@ -58,7 +58,7 @@ def calculate_total_d_score(img):
     print("Blue-White Veil Area Percentage:", bw_percentage)
     print("D Score:", d_score)
 
-    return d_score,pn_percentage,dg_percentage,sa_percentage,bw_percentageÏ
+    return d_score, pn_percentage, dg_percentage, sa_percentage, bw_percentage
 
 
 def calculate_and_visualize(img):
@@ -135,3 +135,9 @@ def calculate_and_visualize(img):
 
     plt.tight_layout()
     plt.show()
+
+
+if __name__ == "__main__":
+    pig_net = cv2.imread('../images/ISIC_0000139_attribute_pigment_network.png')
+    per = calculate_area_percentage(pig_net)
+    print("Pigment Network Area Percentage:", per)

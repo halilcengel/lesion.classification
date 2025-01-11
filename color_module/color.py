@@ -31,7 +31,7 @@ class ColorInformationExtractor:
         total_pixels = height * width
         n_segments = total_pixels // 32  # Each superpixel should have 32 pixels
 
-        segments = slic(image, n_segments=32, compactness=10, sigma=1)
+        segments = slic(image, n_segments=n_segments, compactness=10, sigma=1)
         return segments
 
     def get_dominant_color(self, region):
@@ -101,8 +101,8 @@ class ColorInformationExtractor:
 
 
 if __name__ == "__main__":
-    image = cv2.imread('../segmentation_v2_masked_images/ISIC_0000042_masked.png')
-    mask = cv2.imread('../segmentation_v2_masks/ISIC_0000042_segmented.png', cv2.IMREAD_GRAYSCALE)
+    image = cv2.imread('../images/rapor/segmentation/segmented_images/ISIC_0000171_masked.png')
+    #mask = cv2.imread('../segmentation_v2_masks/ISIC_0000042_segmented.png', cv2.IMREAD_GRAYSCALE)
 
     color_extractor = ColorInformationExtractor()
 

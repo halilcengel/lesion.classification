@@ -9,7 +9,7 @@ from starlette.responses import JSONResponse
 from segmentation_v2 import ImageProcessing
 from hair_removal import demo_hair_removal
 from asymmetry_module.shape_asymmetry import rotate_image, calculate_asymmetry
-from border_irregularity_module.main import calculate_total_b_score
+from border_irregularity_module.old_main import calculate_total_b_score
 from border_irregularity_module.utils import detect_border
 
 # Configure basic logging
@@ -24,7 +24,7 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
-
+# USE REMOVE_HAIR PLZ :D
 
 @app.post("/remove-hair")
 async def remove_hair(file: UploadFile = File(...), include_steps: bool = False):

@@ -1,91 +1,70 @@
+import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import io, morphology, filters, util
 from skimage.transform import rotate
 
 
-def detect_pigment_network(img_gray, num_directions=12, length=15):
+def detect_pigment_network(img_gray, num_directions=6, length=15):
     """
-    Detect pigment network in a dermoscopic image using:
-    1) Morphological bottom-hat filtering with a linear structuring element (SE).
-    2) Directional filtering at multiple orientations.
-    3) Combining results to emphasize the reticular pattern.
-
-    Parameters:
-    -----------
-    img_gray      : np.ndarray
-        Grayscale dermoscopic image.
-    img_mask      : np.ndarray
-        Binary mask to focus on the lesion area (1 = lesion, 0 = outside).
-    num_directions: int
-        Number of directional filters to apply (covering [0, pi] in increments).
-    length        : int
-        Length of the linear structuring element (SE).
-
-    Returns:
-    --------
-    final_detection: np.ndarray (same shape as img_gray)
-        A float or integer array representing the combined response emphasizing pigment network.
+    Optimized version of pigment network detection with fewer directions and pre-computed SEs.
     """
-
-    # Step 1: Mask the input to limit computations to lesion area
-    img_lesion = img_gray
-
-    # Step 2: Apply morphological bottom-hat filter in various orientations
-    # The black_tophat function from scikit-image performs bottom-hat filtering.
-    # We'll rotate a linear SE and keep track of the maximum response across orientations.
+    # Pre-compute structuring elements for all angles
     angles = np.linspace(0, 180, num_directions, endpoint=False)
-    responses = []
+    structuring_elements = []
+    
+    # Create base structuring element once
+    base_se = np.zeros((length, 1), dtype=bool)
+    base_se[:, 0] = True
 
+    # Pre-compute all rotated structuring elements
     for angle in angles:
-        # Create a linear SE (e.g., a 'rectangle' of size (1, length)),
-        # then rotate it to the desired angle via rotate(...).
-        # Because morphology.selem doesn't provide direct rotation, we'll rotate
-        # a small binary image representing our SE, then convert it to a structuring element.
+        rotated = rotate(base_se, angle, resize=True, preserve_range=True)
+        structuring_elements.append(rotated > 0.5)
 
-        # Create a base "line" structuring element of shape (length x 1)
-        base_se = np.zeros((length, 1), dtype=bool)
-        base_se[:, 0] = True  # vertical line
+    # Initialize response accumulator
+    max_response = np.zeros_like(img_gray, dtype=float)
 
-        # Convert to a 2D image large enough to rotate
-        # (make it a square for proper rotation)
-        max_dim = length
-        se_image = np.zeros((max_dim, max_dim), dtype=bool)
-        # Place the base SE in the center
-        center = max_dim // 2
-        start = center - (length // 2)
-        se_image[start:start + length, center] = True
+    # Apply bottom-hat filter with each pre-computed SE
+    for se in structuring_elements:
+        response = morphology.black_tophat(img_gray, se)
+        max_response = np.maximum(max_response, response)
 
-        # Rotate the SE image by 'angle'
-        se_rotated_img = rotate(se_image.astype(float), angle, resize=False, order=0, preserve_range=True) > 0.5
-
-        # Convert rotated image back to a structuring element
-        se_rotated = morphology.binary_dilation(se_rotated_img)
-
-        # Perform bottom-hat filtering using the rotated structuring element
-        # black_tophat returns bright output for darker structures on a lighter background
-        response = morphology.black_tophat(img_lesion, footprint=se_rotated)
-        responses.append(response)
-
-    # Step 3: Combine the responses by taking the maximum across all directions
-    # (This helps capture reticular patterns that appear in multiple orientations.)
-    combined_response = np.max(np.stack(responses, axis=-1), axis=-1)
-
-    # Step 4: (Optional) Post-process to emphasize thin grid lines
-    # For example, we can apply a threshold or further enhancing filters
-    # Here, we apply a simple Otsu threshold to highlight network lines:
-    thresh_val = filters.threshold_otsu(combined_response[combined_response > 0]) \
-        if np.any(combined_response > 0) else 0
-    final_detection = combined_response >= thresh_val
+    # Normalize and threshold the result
+    max_response = (max_response - max_response.min()) / (max_response.max() - max_response.min() + 1e-8)
+    threshold = filters.threshold_otsu(max_response)
+    final_detection = max_response > threshold
 
     return final_detection
 
 
+def detect_pigment_network_v2(image):
+    # Convert to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Apply contrast enhancement
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+    enhanced = clahe.apply(gray)
+
+    # Apply directional filters (Gabor filter bank)
+    theta = np.pi / 4  # 45 degrees
+    kernel = cv2.getGaborKernel((21, 21), sigma=3, theta=theta, lambd=10, gamma=0.5)
+    filtered = cv2.filter2D(enhanced, -1, kernel)
+
+    # Threshold to get binary mask
+    _, mask = cv2.threshold(filtered, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+    return mask
+
+
 if __name__ == "__main__":
     # Example usage (files need to be replaced with actual paths):
-    img_gray = io.imread('../segmentation_v2_masked_images/ISIC_0000042_masked.png', as_gray=True)
+    img_gray = io.imread('../images/rapor/segmentation/segmented_images/ISIC_0000148_masked.png', as_gray=True)
 
-    pigment_network = detect_pigment_network(img_gray, num_directions=12, length=15)
+    pigment_network = detect_pigment_network(img_gray)
+
+    pigment_network_uint8 = (pigment_network * 255).astype(np.uint8)
+    cv2.imwrite('../images/rapor/pigment_network/ISIC_0000148_pigment_network.png', pigment_network_uint8)
 
     # Visualize results:
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))

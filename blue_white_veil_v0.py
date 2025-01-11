@@ -24,7 +24,7 @@ def detect_blue_white_veil(image_path, reference_blue=(0, 0, 255), reference_whi
     # Apply SLIC superpixel segmentation
     superpixels = slic(
         float_img,
-        n_segments=300,  # Number of superpixels
+        n_segments=50,  # Number of superpixels
         compactness=10,  # Balances color proximity and space proximity
         start_label=1
     )

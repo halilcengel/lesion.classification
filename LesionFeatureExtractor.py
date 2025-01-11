@@ -1,13 +1,14 @@
 import asyncio
 import os
-
+import pandas as pd
+from tqdm import tqdm
 import numpy as np
 import cv2
 from typing import Dict, Tuple
 
 from typing import List
 
-from hair_removal import demo_hair_removal
+from hair_removal import demo_hair_removal, remove_hair_with_visualization
 
 from asymmetry_module.color_asymmetry import ColorAsymmetryAnalyzer
 from asymmetry_module.utils import rotate_image, split_horizontally, split_vertically
@@ -20,14 +21,16 @@ from differential_structures_module.dots_and_globs_detection import detect_dots_
 from differential_structures_module.structless_area_detection import detect_structureless_area
 from differential_structures_module.utils import calculate_area_percentage
 
-
-from border_irregularity_module import utils
+from border_irregularity_module import main
 
 from color_module.color import ColorInformationExtractor
 
+from segmentation_v2 import ImageProcessing
+
 
 class LesionFeatureExtractor:
-    def __init__(self, n_segments: int = 200, compactness: int = 10, color_threshold: float = 1e-3, border_segments: int = 8):
+    def __init__(self, n_segments: int = 50, compactness: int = 10, color_threshold: float = 1e-3,
+                 border_segments: int = 8):
         """
         Initialize combined asymmetry analyzer that incorporates color, brightness, and shape features.
 
@@ -44,16 +47,15 @@ class LesionFeatureExtractor:
         self.border_segments = border_segments
         self.color_extractor = ColorInformationExtractor()
 
-
     def calculate_color_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from color-based asymmetry analysis."""
         h_asym, v_asym, details = self.color_analyzer.analyze_image(image)
-
+        print("Calculating color features")
         features = {
-            'color_horizontal_symmetric_ratio': details['horizontal']['symmetric_count'] /
+            'color_horizontal_symmetric_ratio': details['horizontal']['symmetric_count'] / \
                                                 (details['horizontal']['symmetric_count'] + details['horizontal'][
                                                     'asymmetric_count']),
-            'color_vertical_symmetric_ratio': details['vertical']['symmetric_count'] /
+            'color_vertical_symmetric_ratio': details['vertical']['symmetric_count'] / \
                                               (details['vertical']['symmetric_count'] + details['vertical'][
                                                   'asymmetric_count']),
             'color_horizontal_is_asymmetric': float(h_asym),
@@ -63,6 +65,7 @@ class LesionFeatureExtractor:
 
     def calculate_brightness_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from brightness-based asymmetry analysis."""
+        print("Calculating brightness features")
         gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) if len(image.shape) == 3 else image
         rotated = rotate_image(gray_image)
 
@@ -85,6 +88,7 @@ class LesionFeatureExtractor:
 
     def calculate_differential_structure_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from differential structures analysis."""
+        print("Calculating differential structure features")
         img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         pigment_network = detect_pigment_network(img_gray)
@@ -108,6 +112,7 @@ class LesionFeatureExtractor:
 
     def calculate_shape_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from shape-based asymmetry analysis."""
+        print("calculating shape features")
         if len(image.shape) == 3:
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         else:
@@ -126,23 +131,12 @@ class LesionFeatureExtractor:
     def calculate_border_features(self, image: np.ndarray) -> Dict[str, float]:
         """Extract features from border irregularity analysis."""
         # Convert to grayscale if needed
-        if len(image.shape) == 3:
-            image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        else:
-            image_gray = image
 
-        # Detect border
-        image_border = utils.detect_border(image_gray)
-
-        # Split border into segments
-        segments = utils.split_border_into_segments(image_border, num_segments=self.border_segments)
-
-        # Calculate irregularity score
-        total_score = utils.compute_border_irregularity(segments)
+        total_score = main.calculate_total_b_score(image)
 
         features = {
             'border_total_irregularity': total_score,
-            'border_irregularity_normalized': total_score / self.border_segments
+            'border_irregularity_normalized': total_score / 8
         }
         return features
 
@@ -150,7 +144,6 @@ class LesionFeatureExtractor:
         """Extract detailed color distribution features including individual color scores."""
         # Get color counts and scores
         color_counts = self.color_extractor.extract_colors(image)
-        total_color_score = self.color_extractor.calculate_color_score(color_counts)
         individual_color_scores = self.color_extractor.calculate_individual_color_scores(color_counts)
 
         # Calculate total superpixels
@@ -215,29 +208,134 @@ class LesionFeatureExtractor:
 
 
 async def main():
-    image_path = 'images/ISIC_2018/Test/actinic keratosis/ISIC_0010889.jpg'
+    # Initialize feature extractor
+    extractor = LesionFeatureExtractor()
+
+    # Base directory containing all lesion type folders
+    base_dir = os.path.join(os.path.dirname(__file__), "images", "ISIC_2018", "Train_masked_lesions")
+
+    # Lists to store features and labels
+    all_features = []
+    labels = []
+    image_paths = []
+
+    # Process each lesion type folder
+    for lesion_type in os.listdir(base_dir):
+        lesion_dir = os.path.join(base_dir, lesion_type)
+        if not os.path.isdir(lesion_dir):
+            continue
+
+        print(f"Processing {lesion_type} images...")
+
+        # Process each image in the lesion folder
+        for img_name in tqdm(os.listdir(lesion_dir)):
+            if not img_name.lower().endswith(('.png', '.jpg', '.jpeg')):
+                continue
+
+            img_path = os.path.join(lesion_dir, img_name)
+
+            try:
+                # Read and preprocess image
+                image = cv2.imread(img_path)
+                if image is None:
+                    print(f"Failed to load image: {img_path}")
+                    continue
+
+                # Remove hair from the image using remove_hair_with_visualization function
+                #cleaned_image = await remove_hair_with_visualization(image)
+                #image = cleaned_image['result']  # Get the cleaned image from the result key
+
+                #processor = ImageProcessing(image)
+
+                #thresholded = processor.global_thresholding()
+
+                #result = processor.apply_mask(thresholded, reverse=True)
+
+                # Extract all features
+                feature_vector, feature_dict = extractor.extract_feature_vector(image)
+
+                # Store features and label
+                all_features.append(feature_dict)  # Store the dictionary with named features
+                labels.append(lesion_type)
+                image_paths.append(img_path)
+
+            except Exception as e:
+                print(f"Error processing {img_path}: {str(e)}")
+
+    # Create DataFrame with features
+    df = pd.DataFrame(all_features)
+
+    # Add labels and image paths
+    df['label'] = labels
+    df['image_path'] = image_paths
+
+    # Save features to CSV
+    output_file = os.path.join(os.path.dirname(__file__), 'lesion_features.csv')
+    df.to_csv(output_file, index=False)
+    print(f"\nFeatures saved to {output_file}")
+    print(f"Total samples processed: {len(df)}")
+    print("\nFeature statistics:")
+    print(df.describe())
+
+
+import cv2
+import os
+import pandas as pd
+import numpy as np
+
+
+async def not_main():
+    # Initialize feature extractor
+    extractor = LesionFeatureExtractor()
+
+    # Lists to store features and labels
+    all_features = []
+    labels = []
+    image_paths = []
+
+    img_path = "./images/ISIC_2018/Train/melanoma/ISIC_0000139.jpg"
 
     try:
-        if not os.path.exists(image_path):
-            print(f"Image not found at path: {image_path}")
-        else:
-            image = cv2.imread(image_path)
-            if image is None:
-                raise FileNotFoundError(f"Image not found at path: {image_path}")
+        # Read and preprocess image
+        image = cv2.imread(img_path)
+        if image is None:
+            raise FileNotFoundError(f"Could not read image at {img_path}")
 
-            result = await demo_hair_removal(image)
-            analyzer = LesionFeatureExtractor()
-            feature_vector, feature_dict = analyzer.extract_feature_vector(result)
+        # Remove hair from the image using remove_hair_with_visualization function
+        cleaned_image = await remove_hair_with_visualization(image)
+        image = cleaned_image['result']  # Get the cleaned image from the result key
 
-            print("\nFeature Vector Shape:", feature_vector.shape)
-            print("\nFeature Details:")
-            for name, value in feature_dict.items():
-                print(f"{name}: {value:.4f}")
+        processor = ImageProcessing(image)
+        thresholded = processor.global_thresholding()
+        result = processor.apply_mask(thresholded, reverse=True)
 
-    except FileNotFoundError as e:
-        print(e)
+        # Extract all features
+        _, feature_dict = extractor.extract_feature_vector(result)
+
+        # Store features and label
+        all_features.append(feature_dict)  # Store the dictionary with named features
+        labels.append("melanoma")  # Fixed typo in "melanoma"
+        image_paths.append(img_path)
+
+        # Create DataFrame from collected features
+        df = pd.DataFrame(all_features)
+
+        # Add labels and image paths as columns
+        df['label'] = labels
+        df['image_path'] = image_paths
+
+        # Save features to CSV
+        output_file = os.path.join(os.path.dirname(__file__), 'lesion_features.csv')
+        df.to_csv(output_file, index=False)
+
+        print(f"\nFeatures saved to {output_file}")
+        print(f"Total samples processed: {len(df)}")
+        print("\nFeature statistics:")
+        print(df.describe())
+
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Error processing image: {str(e)}")
+
 
 if __name__ == '__main__':
     asyncio.run(main())

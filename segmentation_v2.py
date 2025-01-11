@@ -3,25 +3,44 @@ import logging
 import matplotlib.pyplot as plt
 import cv2
 import numpy as np
+from typing import Union
 
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 
 
 class ImageProcessing:
-    def __init__(self, image_path: str) -> None:
+    def __init__(self, image_source: Union[str, np.ndarray]) -> None:
         """
-        Initialize with the path to the image.
+        Initialize with either a path to the image or an image array.
 
         Parameters:
-        image_path (str): Path to the input image.
+        image_source (Union[str, np.ndarray]): Path to input image or numpy array of the image.
         """
-        self.image: np.ndarray = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-        self.rgb_image: np.ndarray = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
+        if isinstance(image_source, str):
+            # Load from file path
+            self.image = cv2.imread(image_source, cv2.IMREAD_GRAYSCALE)
+            self.rgb_image = cv2.cvtColor(cv2.imread(image_source), cv2.COLOR_BGR2RGB)
 
-        if self.image is None or self.rgb_image is None:
-            raise ValueError(f"Could not read image from path: {image_path}")
+            if self.image is None or self.rgb_image is None:
+                raise ValueError(f"Could not read image from path: {image_source}")
 
+        elif isinstance(image_source, np.ndarray):
+            if len(image_source.shape) == 2:
+                # Input is grayscale
+                self.image = image_source
+                self.rgb_image = cv2.cvtColor(image_source, cv2.COLOR_GRAY2RGB)
+            elif len(image_source.shape) == 3 and image_source.shape[2] == 3:
+                # Input is BGR (OpenCV default) or RGB
+                # Assume BGR input for consistency with OpenCV
+                self.rgb_image = cv2.cvtColor(image_source, cv2.COLOR_BGR2RGB)
+                self.image = cv2.cvtColor(self.rgb_image, cv2.COLOR_RGB2GRAY)
+            else:
+                raise ValueError("Input array must be 2D grayscale or 3D BGR/RGB image")
+        else:
+            raise ValueError("Input must be either a file path (str) or numpy array")
+
+    # All other methods remain exactly the same since they work with self.image and self.rgb_image
     def sobel_edge_detection(self, ksize: int = 3) -> np.ndarray:
         """
         Apply Sobel edge detection on the grayscale image.
@@ -53,23 +72,6 @@ class ImageProcessing:
         blurred_image = cv2.GaussianBlur(self.image, (ksize, ksize), sigma)
         log_edges = cv2.Laplacian(blurred_image, cv2.CV_64F)
         return np.uint8(log_edges)
-
-    def roberts_edge_detection(self) -> np.ndarray:
-        """
-        Apply Roberts edge detection.
-
-        Returns:
-        np.ndarray: Image with Roberts-detected edges.
-        """
-        kernel_x = np.array([[1, 0], [0, -1]], dtype=int)
-        kernel_y = np.array([[0, 1], [-1, 0]], dtype=int)
-        edges_x = cv2.filter2D(self.image, cv2.CV_16S, kernel_x)
-        edges_y = cv2.filter2D(self.image, cv2.CV_16S, kernel_y)
-        roberts_edges = cv2.addWeighted(
-            cv2.convertScaleAbs(edges_x), 0.5,
-            cv2.convertScaleAbs(edges_y), 0.5, 0
-        )
-        return roberts_edges
 
     def global_thresholding(self) -> np.ndarray:
         """
@@ -107,7 +109,6 @@ class ImageProcessing:
         # Apply mask to RGB image
         masked_image = cv2.bitwise_and(self.rgb_image, mask_3channel)
         return masked_image
-
 
 def save_image(image: np.ndarray, output_path: str) -> None:
     """
@@ -170,9 +171,9 @@ def main() -> None:
     4. Saves and optionally plots the results.
     """
     # Input and output directories
-    input_dir = "images/clean_images"
-    segment_dir = 'images/segmentation_masks'
-    masked_output_dir = 'images/segmented_images'
+    input_dir = "images/rapor/hair_removed"
+    segment_dir = 'images/rapor/segmentation/mask'
+    masked_output_dir = 'images/rapor/segmentation/segmented_images'
 
     # Create necessary directories
     os.makedirs(segment_dir, exist_ok=True)

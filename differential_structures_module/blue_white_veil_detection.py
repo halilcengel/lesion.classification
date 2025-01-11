@@ -1,3 +1,5 @@
+from skimage import io, morphology, filters, util
+
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
@@ -20,7 +22,7 @@ def detect_blue_white_veil(original_img, reference_blue=(0, 0, 255), reference_w
     # Apply SLIC superpixel segmentation
     superpixels = slic(
         float_img,
-        n_segments=300,  # Number of superpixels
+        n_segments=50,  # Number of superpixels
         compactness=10,  # Balances color proximity and space proximity
         start_label=1
     )
@@ -66,10 +68,10 @@ def detect_blue_white_veil(original_img, reference_blue=(0, 0, 255), reference_w
 # Example usage
 if __name__ == "__main__":
     # Path to the segmented image
-    segmented_image = '../segmentation_v2_masked_images/ISIC_0000042_masked.png'
+    segmented_image = io.imread('../images/rapor/segmentation/segmented_images/ISIC_0000148_masked.png', as_gray=False)
 
     bw_veil_mask = detect_blue_white_veil(
-        image_path=segmented_image,
+        original_img=segmented_image,
         reference_blue=(80, 50, 200),  # Example reference for "blue" in BGR
         reference_white=(220, 220, 220)  # Example reference for "white"
     )
